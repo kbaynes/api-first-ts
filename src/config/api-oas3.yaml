@@ -1,0 +1,106 @@
+openapi: 3.0.0
+info:
+ title: Hello World API
+ description: This is our Hello World API.
+ version: '1.0.0'
+paths:
+ /test:
+   post:
+     x-swagger-router-controller: helloWorldRoute
+     operationId: helloWorldPost
+     tags:
+       - /test
+     description: >-
+       Returns Hello world message.
+     parameters:
+       - name: greeting
+         in: query
+         description: Name of greeting
+         required: true
+         schema:
+           type: string
+     responses:
+       '200':
+         description: Successful request.
+         content:
+           application/json:
+             schema:
+               $ref: '#/components/schemas/Hello'
+       default:
+         description: Invalid request.
+         content:
+           application/json:
+             schema:
+               $ref: '#/components/schemas/Error'
+   get:
+     x-swagger-router-controller: helloWorldRoute
+     operationId: helloWorldGet
+     tags:
+       - /test
+     description: >-
+       Returns Hello world message
+     parameters:
+       - name: greeting
+         in: query
+         description: Name of greeting
+         required: true
+         schema:
+           type: string
+     responses:
+       '200':
+         description: Successful request.
+         content:
+           application/json:
+             schema:
+               $ref: '#/components/schemas/Hello'
+       default:
+         description: Invalid request.
+         content:
+           application/json:
+             schema:
+               $ref: '#/components/schemas/Error'
+
+ /chello:
+   get:
+     x-openapi-router-service: chelloWorldRoute
+     operationId: chelloWorldGet
+     tags:
+       - /chello
+     description: >-
+       Returns CHello world message
+     parameters:
+       - name: greeting
+         in: query
+         description: Name of greeting
+         required: true
+         schema:
+           type: string
+     responses:
+       '200':
+         description: Successful request.
+         content:
+           application/json:
+             schema:
+               $ref: '#/components/schemas/Hello'
+       default:
+         description: Invalid request.
+         content:
+           application/json:
+             schema:
+               $ref: '#/components/schemas/Error'
+servers:
+ - url: '/api'
+components:
+ schemas:
+   Hello:
+     properties:
+       msg:
+         type: string
+     required:
+       - msg
+   Error:
+     properties:
+       message:
+         type: string
+     required:
+       - message

@@ -1,0 +1,9 @@
+additionalProperties:
+  allowUnicodeIdentifiers: false
+  disallowAdditionalPropertiesIfNotPresent: true
+  ensureUniqueParams: true
+  legacyDiscriminatorBehavior: true
+  prependFormOrBodyParameters: false
+  serverPort: null
+  sortModelPropertiesByRequiredFlag: true
+  sortParamsByRequiredFlag: true
